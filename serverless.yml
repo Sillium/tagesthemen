@@ -1,6 +1,6 @@
 org: stoerk
 app: sillium-apis
-service: flask-tagesthemen
+service: flask-tv-api
 
 frameworkVersion: '2'
 
@@ -20,12 +20,11 @@ functions:
     handler: wsgi_handler.handler
     events:
       - http:
-          path: /
+          path: /tagesthemen/
           method: ANY
       - http:
-          path: /{proxy+}
+          path: /tagesthemen/{proxy+}
           method: ANY
-
 
 plugins:
   - serverless-wsgi
