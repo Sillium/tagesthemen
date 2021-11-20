@@ -26,6 +26,7 @@ functions:
           path: /tagesthemen/{proxy+}
           method: ANY
 
+
 plugins:
   - serverless-wsgi
   - serverless-python-requirements
