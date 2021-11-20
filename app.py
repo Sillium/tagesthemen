@@ -32,7 +32,3 @@ def index():
     program = dict(zip(titles, dates))
     when = "Die Tagesthemen kommen heute um " + program["Tagesthemen"] + " in der ARD."
     return render_template("index.html", when=when, url=url)
-
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=1024, debug=True)
