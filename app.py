@@ -1,4 +1,5 @@
 import datetime
+from pytz import timezone
 import requests
 from bs4 import BeautifulSoup
 from flask import Flask
@@ -8,7 +9,7 @@ app = Flask(__name__)
 
 @app.route("/tagesthemen")
 def index():
-    today = str(datetime.date.today().strftime("%d.%m.%Y"))
+    today = str(datetime.datetime.now(timezone('Europe/Berlin')).strftime("%d.%m.%Y"))
     url = "https://programm.ard.de/programm/sender?sender=28106&datum=" + today
     r = requests.get(url)
     soup = soup = BeautifulSoup(r.text, "html.parser")
