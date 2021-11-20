@@ -6,8 +6,7 @@ from flask import render_template
 
 app = Flask(__name__)
 
-
-@app.route("/")
+@app.route("/tagesthemen")
 def index():
     today = str(datetime.date.today().strftime("%d.%m.%Y"))
     url = "https://programm.ard.de/programm/sender?sender=28106&datum=" + today
