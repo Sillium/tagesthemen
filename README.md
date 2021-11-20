@@ -9,4 +9,5 @@ Sie läuft auch auf [www.johl.io/tagesthemen](https://www.johl.io/tagesthemen).
 
 # Installation
 `pip install -r requirements.txt`
+
 `python3 app.py`
