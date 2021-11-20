@@ -20,10 +20,10 @@ functions:
     handler: wsgi_handler.handler
     events:
       - http:
-          path: /tagesthemen/
+          path: /
           method: ANY
       - http:
-          path: /tagesthemen/{proxy+}
+          path: /{proxy+}
           method: ANY
 
 
