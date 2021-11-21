@@ -8,11 +8,12 @@ from flask import render_template
 
 app = Flask(__name__)
 
-@app.route("/tagesthemen")
-def index():
+base_url = "https://programm.ard.de/programm/sender?sender=28106&datum="
+
+def get_when(search_term):
     tz = pytz.timezone('Europe/Berlin')
     today = str(datetime.datetime.now(tz).strftime("%d.%m.%Y"))
-    url = "https://programm.ard.de/programm/sender?sender=28106&datum=" + today
+    url = base_url + today
     r = requests.get(url)
     soup = soup = BeautifulSoup(r.text, "html.parser")
     spans = soup.findAll("span")
@@ -33,5 +34,21 @@ def index():
             """Ignore the tag that doesn't have a class atribute"""
             pass
     program = dict(zip(titles, dates))
-    when = "Die Tagesthemen kommen heute um " + program["Tagesthemen"] + " in der ARD."
+    return {
+        "when": program[search_term],
+        "searchTerm": search_term,
+        "url": url
+    }
+
+@app.route("/tagesthemen/json")
+def json():
+    return get_when["Tagesthemen"]
+
+@app.route("/tagesthemen/plain")
+def plain_text():
+    return get_when["Tagesthemen"]["when"]
+
+@app.route("/tagesthemen")
+def index():
+    answer = "Die Tagesthemen kommen heute um " + get_when["Tagesthemen"] + " in der ARD."
     return render_template("index.html", when=when, url=url)
