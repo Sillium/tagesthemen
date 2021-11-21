@@ -51,4 +51,4 @@ def plain_text():
 @app.route("/tagesthemen")
 def index():
     answer = "Die Tagesthemen kommen heute um " + get_when("Tagesthemen")["when"] + " in der ARD."
-    return render_template("index.html", when=answer, url=url)
+    return render_template("index.html", when=answer, url=get_when("Tagesthemen")["url"])
