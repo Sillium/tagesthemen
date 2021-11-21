@@ -42,13 +42,16 @@ def get_when(search_term):
 
 @app.route("/tagesthemen/json")
 def json():
-    return get_when["Tagesthemen"]
+    result_dict = get_when["Tagesthemen"]
+    return result_dict
 
 @app.route("/tagesthemen/plain")
 def plain_text():
-    return get_when["Tagesthemen"]["when"]
+    result_dict = get_when["Tagesthemen"]
+    return result_dict["when"]
 
 @app.route("/tagesthemen")
 def index():
-    answer = "Die Tagesthemen kommen heute um " + get_when["Tagesthemen"] + " in der ARD."
-    return render_template("index.html", when=when, url=url)
+    result_dict = get_when["Tagesthemen"]
+    answer = "Die Tagesthemen kommen heute um " + result_dict["when"] + " in der ARD."
+    return render_template("index.html", when=answer, url=url)
