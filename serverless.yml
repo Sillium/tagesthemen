@@ -5,8 +5,21 @@ service: flask-tv-api
 frameworkVersion: '2'
 
 custom:
+  basePath:
+    dev: dev
+    prod: ''
   wsgi:
     app: app.app
+  customDomain:
+    domainName: tagesthemen.api.sillium.xyz
+    certificateName: '*.api.sillium.xyz'
+    hostedZoneId: Z04645421K92MX0ACC0PF
+    basePath: ${self:custom.basepath.${self:provider.stage}}
+    stage: ${self:provider.stage}
+    createRoute53Record: true
+  scripts:
+    hooks:
+      'before:deploy:deploy': serverless create_domain --stage ${self:provider.stage} --verbose
 
 provider:
   name: aws
@@ -31,3 +44,4 @@ functions:
 plugins:
   - serverless-wsgi
   - serverless-python-requirements
+  - serverless-plugin-scripts
