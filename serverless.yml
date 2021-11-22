@@ -25,7 +25,7 @@ custom:
     rewriteRecords: false
   scripts:
     hooks:
-      'before:deploy:deploy': serverless create-cert --stage ${self:custom.stage}; serverless create_domain --stage ${self:custom.stage} --verbose
+      'before:deploy:deploy': serverless create-cert --stage ${self:custom.stage}; serverless delete_domain --stage ${self:custom.stage}; serverless create_domain --stage ${self:custom.stage} --verbose
 
 provider:
   name: aws
