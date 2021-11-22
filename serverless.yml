@@ -13,8 +13,8 @@ custom:
   customDomain:
     domainName: tagesthemen.sillium.org
     certificateName: 'tagesthemen.sillium.org'
-    basePath: ${self:custom.basePath.${self:provider.stage}}
-    stage: ${self:provider.stage}
+    basePath: ${self:custom.basePath.${opt:stage}}
+    stage: ${opt:stage}
     createRoute53Record: true
   customCertificate:
     certificateName: 'tagesthemen.sillium.org'
@@ -23,7 +23,7 @@ custom:
     rewriteRecords: false
   scripts:
     hooks:
-      'before:deploy:deploy': serverless create-cert; serverless create_domain --stage ${self:provider.stage} --verbose
+      'before:deploy:deploy': serverless create-cert; serverless create_domain --stage ${opt:stage} --verbose
 
 provider:
   name: aws
