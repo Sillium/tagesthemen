@@ -1,15 +1,15 @@
 org: stoerk
 app: sillium-apis
-service: flask-tv-api
+service: tagesthemen
 
 frameworkVersion: '2'
 
 custom:
   stage: ${opt:stage}
   dev: 
-    domainName: flask-tv-api.dev.sillium.org
+    domainName: tagesthemen.dev.sillium.org
   prod:
-    domainName: flask-tv-api.sillium.org
+    domainName: tagesthemen.sillium.org
   wsgi:
     app: app.app
   customDomain:
