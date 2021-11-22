@@ -19,10 +19,10 @@ custom:
     createRoute53Record: true
     autoDomain: true
     certificateArn: ${param:certificateArn}
-  scripts:
-    hooks:
+#  scripts:
+#    hooks:
 #      'before:deploy:deploy': export SLS_DEBUG=*; serverless create_domain --stage ${self:custom.stage};
-      'before:deploy:deploy': export SLS_DEBUG=*; serverless delete_domain --stage ${self:custom.stage};
+#      'before:deploy:deploy': export SLS_DEBUG=*; serverless delete_domain --stage ${self:custom.stage};
 
 provider:
   name: aws
@@ -48,5 +48,5 @@ functions:
 plugins:
   - serverless-wsgi
   - serverless-python-requirements
-  - serverless-plugin-scripts
+#  - serverless-plugin-scripts
   - serverless-domain-manager
