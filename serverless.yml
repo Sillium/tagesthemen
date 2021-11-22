@@ -6,14 +6,19 @@ frameworkVersion: '2'
 
 custom:
   stage: ${opt:stage}
+  dev: 
+    domainName: tagesthemen.dev.sillium.org
+  prod:
+    domainName: tagesthemen.sillium.org
   domainName:
     dev: tagesthemen.dev.sillium.org
     prod: tagesthemen.sillium.org
   wsgi:
     app: app.app
   customDomain:
-    domainName: ${self:custom.domainName.${self:custom.stage}}
+    domainName: ${self:custom.${self:custom.stage}.domainName}
     basePath: ''
+#    autoDomain: true
     createRoute53Record: true
     hostedZoneId: ${param:hostedZoneId}
     certificateArn: ${param:certificateArn}
