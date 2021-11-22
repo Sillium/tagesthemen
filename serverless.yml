@@ -15,9 +15,13 @@ custom:
     domainName: tagesthemen.sillium.org
     certificateName: 'tagesthemen.sillium.org'
     basePath: ${self:custom.basePath.${self:custom.stage}}
+    hostedZoneId: ${param:hostedZoneId}
     stage: ${self:custom.stage}
     createRoute53Record: true
     autoDomain: true
+    endpointType: regional
+    securityPolicy: tls_1_2
+    apiType: rest
   customCertificate:
     certificateName: 'tagesthemen.sillium.org'
     hostedZoneNames: 'sillium.org.'
