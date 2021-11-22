@@ -6,6 +6,9 @@
   "devDependencies": {
     "serverless-python-requirements": "^5.1.0",
     "serverless-wsgi": "^1.7.6",
-    "serverless-plugin-scripts": "^1.0.2"
+    "serverless-plugin-scripts": "^1.0.2",
+    "serverless-hosted-zone": "^0.0.7",
+    "serverless-domain-manager": "^5.2.0",
+    "serverless-certificate-creator": "^1.6.0"
   }
 }
