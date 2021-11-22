@@ -17,7 +17,7 @@ custom:
     basePath: ''
     hostedZoneId: ${param:hostedZoneId}
     createRoute53Record: true
-#    autoDomain: true
+    autoDomain: true
     certificateArn: ${param:certificateArn}
   scripts:
     hooks:
