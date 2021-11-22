@@ -13,7 +13,7 @@ custom:
     app: app.app
   customDomain:
     domainName: tagesthemen.sillium.org
-    certificateName: 'tagesthemen.sillium.org'
+    certificateName: '*.sillium.org'
     basePath: ${self:custom.basePath.${self:custom.stage}}
 #    hostedZoneId: ${param:hostedZoneId}
     stage: ${self:custom.stage}
@@ -22,17 +22,11 @@ custom:
     endpointType: regional
     securityPolicy: tls_1_2
     apiType: rest
-#    certificateArn: ${certificate:${self:custom.customCertificate.certificateName}:CertificateArn}
-#    certificateArn: arn:aws:acm:us-east-1:052227503343:certificate/292363c4-fd42-49e9-bfe2-32d8fd2bb75d
-  customCertificate:
-    certificateName: 'tagesthemen.sillium.org'
-    hostedZoneNames: 'sillium.org.'
-    region: us-east-1
-    rewriteRecords: false
-#  scripts:
-#    hooks:
-#      'before:deploy:deploy': export SLS_DEBUG=*; serverless create-cert --stage ${self:custom.stage}; serverless delete_domain --stage ${self:custom.stage}; serverless create_domain --stage ${self:custom.stage} --verbose
-#      'before:deploy:deploy': export SLS_DEBUG=*; serverless delete_domain --stage ${self:custom.stage}; serverless remove-cert --stage ${self:custom.stage};
+#    certificateArn: ${param:certificateArn}
+  scripts:
+    hooks:
+#      'before:deploy:deploy': export SLS_DEBUG=*; serverless delete_domain --stage ${self:custom.stage}; serverless create_domain --stage ${self:custom.stage} --verbose
+      'before:deploy:deploy': export SLS_DEBUG=*; serverless create_domain --stage ${self:custom.stage} --verbose
 
 provider:
   name: aws
