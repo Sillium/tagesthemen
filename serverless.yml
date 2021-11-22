@@ -17,6 +17,7 @@ custom:
     basePath: ${self:custom.basePath.${self:custom.stage}}
     stage: ${self:custom.stage}
     createRoute53Record: true
+    autoDomain: true
   customCertificate:
     certificateName: 'tagesthemen.sillium.org'
     hostedZoneNames: 'sillium.org.'
