@@ -6,28 +6,22 @@ frameworkVersion: '2'
 
 custom:
   stage: ${opt:stage}
-  basePath:
-    dev: dev
-    prod: prod
+  domainName:
+    dev: tagesthemen.dev.sillium.org
+    prod: tagesthemen.sillium.org
   wsgi:
     app: app.app
   customDomain:
-    domainName: tagesthemen.sillium.org
-    certificateName: '*.sillium.org'
-    basePath: ${self:custom.basePath.${self:custom.stage}}
+    domainName: ${self:custom.basePath.${self:custom.domainName}}
+#    certificateName: '*.sillium.org'
+    basePath: ''
     hostedZoneId: ${param:hostedZoneId}
-#    stage: ${self:custom.stage}
     createRoute53Record: true
-    autoDomain: true
-#    endpointType: regional
-#    securityPolicy: tls_1_2
-#    apiType: rest
+#    autoDomain: true
     certificateArn: ${param:certificateArn}
   scripts:
     hooks:
-#      'before:deploy:deploy': export SLS_DEBUG=*; serverless delete_domain --stage ${self:custom.stage}; serverless create_domain --stage ${self:custom.stage} --verbose
-#      'before:deploy:deploy': export SLS_DEBUG=*; serverless create_domain --stage ${self:custom.stage} --verbose;
-      'before:deploy:deploy': export SLS_DEBUG=*; serverless delete_domain --stage ${self:custom.stage} --verbose;
+      'before:deploy:deploy': export SLS_DEBUG=*; serverless create_domain --stage ${self:custom.stage};
 
 provider:
   name: aws
