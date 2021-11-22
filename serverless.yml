@@ -8,7 +8,7 @@ custom:
   stage: ${opt:stage}
   basePath:
     dev: dev
-    prod: ''
+    prod: prod
   wsgi:
     app: app.app
   customDomain:
