@@ -19,6 +19,11 @@ custom:
     createRoute53Record: true
     hostedZoneId: ${param:hostedZoneId}
     certificateArn: ${param:certificateArn}
+  apiGatewayCaching:
+    enabled: true
+    clusterSize: '0.5'
+    ttlInSeconds: 60
+    dataEncrypted: false
 
 provider:
   name: aws
@@ -36,12 +41,19 @@ functions:
     events:
       - http:
           path: /
-          method: ANY
+          method: GET
+          caching:
+            enabled: true
       - http:
           path: /{proxy+}
-          method: ANY
+          method: GET
+          caching:
+            enabled: true
+            cacheKeyParameters:
+              - name: request.path.proxy
 
 plugins:
   - serverless-wsgi
   - serverless-python-requirements
   - serverless-domain-manager
+  - serverless-api-gateway-caching
