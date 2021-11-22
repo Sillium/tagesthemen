@@ -21,8 +21,8 @@ custom:
     certificateArn: ${param:certificateArn}
   apiGatewayCaching:
     enabled: true
-    clusterSize: '0.5'
-    ttlInSeconds: 60
+    clusterSize: '0.1'
+    ttlInSeconds: 300
     dataEncrypted: false
 
 provider:
