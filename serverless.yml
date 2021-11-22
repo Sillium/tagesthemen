@@ -10,9 +10,6 @@ custom:
     domainName: tagesthemen.dev.sillium.org
   prod:
     domainName: tagesthemen.sillium.org
-  domainName:
-    dev: tagesthemen.dev.sillium.org
-    prod: tagesthemen.sillium.org
   wsgi:
     app: app.app
   customDomain:
