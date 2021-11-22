@@ -15,14 +15,14 @@ custom:
     domainName: tagesthemen.sillium.org
     certificateName: '*.sillium.org'
     basePath: ${self:custom.basePath.${self:custom.stage}}
-#    hostedZoneId: ${param:hostedZoneId}
+    hostedZoneId: ${param:hostedZoneId}
 #    stage: ${self:custom.stage}
     createRoute53Record: true
-#    autoDomain: true
+    autoDomain: true
 #    endpointType: regional
 #    securityPolicy: tls_1_2
 #    apiType: rest
-#    certificateArn: ${param:certificateArn}
+    certificateArn: ${param:certificateArn}
   scripts:
     hooks:
 #      'before:deploy:deploy': export SLS_DEBUG=*; serverless delete_domain --stage ${self:custom.stage}; serverless create_domain --stage ${self:custom.stage} --verbose
