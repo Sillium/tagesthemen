@@ -25,7 +25,7 @@ provider:
   lambdaHashingVersion: '20201221'
   memorySize: 128
   timeout: 5
-  stackName: tagesthemen
+
   tracing:
     lambda: true
 
