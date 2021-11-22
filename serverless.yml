@@ -13,7 +13,7 @@ custom:
   customDomain:
     domainName: tagesthemen.sillium.org
     certificateName: 'tagesthemen.sillium.org'
-    basePath: ${self:custom.basepath.${self:provider.stage}}
+    basePath: ${self:custom.basePath.${self:provider.stage}}
     stage: ${self:provider.stage}
     createRoute53Record: true
   customCertificate:
