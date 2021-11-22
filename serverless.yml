@@ -18,7 +18,7 @@ custom:
   customDomain:
     domainName: ${self:custom.${self:custom.stage}.domainName}
     basePath: ''
-#    autoDomain: true
+    autoDomain: true
     createRoute53Record: true
     hostedZoneId: ${param:hostedZoneId}
     certificateArn: ${param:certificateArn}
@@ -30,7 +30,6 @@ provider:
   lambdaHashingVersion: '20201221'
   memorySize: 128
   timeout: 5
-
   tracing:
     lambda: true
 
