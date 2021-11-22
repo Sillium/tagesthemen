@@ -13,16 +13,10 @@ custom:
     app: app.app
   customDomain:
     domainName: ${self:custom.domainName.${self:custom.stage}}
-#    certificateName: '*.sillium.org'
     basePath: ''
-    hostedZoneId: ${param:hostedZoneId}
     createRoute53Record: true
-    autoDomain: true
+    hostedZoneId: ${param:hostedZoneId}
     certificateArn: ${param:certificateArn}
-#  scripts:
-#    hooks:
-#      'before:deploy:deploy': export SLS_DEBUG=*; serverless create_domain --stage ${self:custom.stage};
-#      'before:deploy:deploy': export SLS_DEBUG=*; serverless delete_domain --stage ${self:custom.stage};
 
 provider:
   name: aws
