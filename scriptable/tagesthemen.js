@@ -1,4 +1,4 @@
-const apiUrl = "https://7rf3jp6b97.execute-api.eu-central-1.amazonaws.com/prod/tagesthemen/json"
+const apiUrl = "https://tagesthemen.sillium.org/json"
 const DEBUG = false
 
 const log = DEBUG ? console.log.bind(console) : function () { };
