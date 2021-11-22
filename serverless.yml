@@ -32,7 +32,7 @@ custom:
   scripts:
     hooks:
 #      'before:deploy:deploy': export SLS_DEBUG=*; serverless create-cert --stage ${self:custom.stage}; serverless delete_domain --stage ${self:custom.stage}; serverless create_domain --stage ${self:custom.stage} --verbose
-      'before:deploy:deploy': export SLS_DEBUG=*; serverless remove-cert --stage ${self:custom.stage}; serverless delete_domain --stage ${self:custom.stage}
+      'before:deploy:deploy': export SLS_DEBUG=*; serverless delete_domain --stage ${self:custom.stage}; serverless remove-cert --stage ${self:custom.stage};
 
 provider:
   name: aws
