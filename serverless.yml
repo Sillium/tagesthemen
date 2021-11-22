@@ -44,5 +44,4 @@ functions:
 plugins:
   - serverless-wsgi
   - serverless-python-requirements
-#  - serverless-plugin-scripts
   - serverless-domain-manager
