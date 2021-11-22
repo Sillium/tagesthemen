@@ -1,12 +1,11 @@
 {
-  "name": "aws-python-flask-api",
+  "name": "tagesthemen-api",
   "version": "1.0.0",
-  "description": "Example of a Python Flask API service with traditional Serverless Framework",
+  "description": "Tagesthemen API",
   "author": "",
   "devDependencies": {
     "serverless-python-requirements": "^5.1.0",
     "serverless-wsgi": "^1.7.6",
-    "serverless-plugin-scripts": "^1.0.2",
     "serverless-domain-manager": "^5.2.0"
   }
 }
