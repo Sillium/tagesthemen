@@ -5,6 +5,7 @@ service: flask-tv-api
 frameworkVersion: '2'
 
 custom:
+  stage: ${opt:stage}
   basePath:
     dev: dev
     prod: ''
@@ -13,8 +14,8 @@ custom:
   customDomain:
     domainName: tagesthemen.sillium.org
     certificateName: 'tagesthemen.sillium.org'
-    basePath: ${self:custom.basePath.${opt:stage}}
-    stage: ${opt:stage}
+    basePath: ${self:custom.basePath.${self:custom.stage}}
+    stage: ${self:custom.stage}
     createRoute53Record: true
   customCertificate:
     certificateName: 'tagesthemen.sillium.org'
@@ -23,11 +24,12 @@ custom:
     rewriteRecords: false
   scripts:
     hooks:
-      'before:deploy:deploy': serverless create-cert; serverless create_domain --stage ${opt:stage} --verbose
+      'before:deploy:deploy': serverless create-cert --stage ${self:custom.stage}; serverless create_domain --stage ${self:custom.stage} --verbose
 
 provider:
   name: aws
   runtime: python3.8
+  stage: ${self:custom.stage}
   lambdaHashingVersion: '20201221'
   memorySize: 128
   timeout: 5
