@@ -22,6 +22,7 @@ custom:
     endpointType: regional
     securityPolicy: tls_1_2
     apiType: rest
+    certificateArn: ${certificate:${self:custom.customCertificate.certificateName}:CertificateArn}
   customCertificate:
     certificateName: 'tagesthemen.sillium.org'
     hostedZoneNames: 'sillium.org.'
