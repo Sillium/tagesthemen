@@ -40,15 +40,15 @@ def get_when(search_term):
         "url": url
     }
 
-@app.route("/tagesthemen/json")
+@app.route("/json")
 def json():
     return get_when("Tagesthemen")
 
-@app.route("/tagesthemen/plain")
+@app.route("/plain")
 def plain_text():
     return get_when("Tagesthemen")["when"]
 
-@app.route("/tagesthemen")
+@app.route("/")
 def index():
     answer = "Die Tagesthemen kommen heute um " + get_when("Tagesthemen")["when"] + " in der ARD."
     return render_template("index.html", when=answer, url=get_when("Tagesthemen")["url"])

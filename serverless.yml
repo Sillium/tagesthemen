@@ -5,15 +5,27 @@ service: flask-tv-api
 frameworkVersion: '2'
 
 custom:
+  stage: ${opt:stage}
+  domainName:
+    dev: tagesthemen.dev.sillium.org
+    prod: tagesthemen.sillium.org
   wsgi:
     app: app.app
+  customDomain:
+    domainName: ${self:custom.domainName.${self:custom.stage}}
+    basePath: ''
+    createRoute53Record: true
+    hostedZoneId: ${param:hostedZoneId}
+    certificateArn: ${param:certificateArn}
 
 provider:
   name: aws
   runtime: python3.8
+  stage: ${self:custom.stage}
   lambdaHashingVersion: '20201221'
   memorySize: 128
   timeout: 5
+
   tracing:
     lambda: true
 
@@ -31,3 +43,5 @@ functions:
 plugins:
   - serverless-wsgi
   - serverless-python-requirements
+#  - serverless-plugin-scripts
+  - serverless-domain-manager
