@@ -20,7 +20,7 @@ custom:
   customCertificate:
     certificateName: 'tagesthemen.sillium.org'
     hostedZoneNames: 'sillium.org.'
-    region: eu-east-1
+    region: us-east-1
     rewriteRecords: false
   scripts:
     hooks:
