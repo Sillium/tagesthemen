@@ -12,7 +12,7 @@ custom:
   wsgi:
     app: app.app
   customDomain:
-    domainName: ${self:custom.domainName.${self:custom.domainName}}
+    domainName: ${self:custom.domainName.${self:custom.stage}}
 #    certificateName: '*.sillium.org'
     basePath: ''
     hostedZoneId: ${param:hostedZoneId}
