@@ -26,7 +26,8 @@ custom:
   scripts:
     hooks:
 #      'before:deploy:deploy': export SLS_DEBUG=*; serverless delete_domain --stage ${self:custom.stage}; serverless create_domain --stage ${self:custom.stage} --verbose
-      'before:deploy:deploy': export SLS_DEBUG=*; serverless create_domain --stage ${self:custom.stage} --verbose || true;
+#      'before:deploy:deploy': export SLS_DEBUG=*; serverless create_domain --stage ${self:custom.stage} --verbose;
+      'before:deploy:deploy': export SLS_DEBUG=*; serverless delete_domain --stage ${self:custom.stage} --verbose;
 
 provider:
   name: aws
