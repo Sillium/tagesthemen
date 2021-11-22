@@ -5,27 +5,25 @@ service: flask-tv-api
 frameworkVersion: '2'
 
 custom:
-#  basePath:
-#    dev: dev
-#    prod: ''
+  basePath:
+    dev: dev
+    prod: ''
   wsgi:
     app: app.app
-#  hostedZone:
-#    name: api.sillium.xyz.
-#  customDomain:
-#    domainName: tagesthemen.api.sillium.xyz
-#    certificateName: 'tagesthemen.api.sillium.xyz'
-#    basePath: ${self:custom.basepath.${self:provider.stage}}
-#    stage: ${self:provider.stage}
-#    createRoute53Record: true
-#  customCertificate:
-#    certificateName: 'tagesthemen.api.sillium.xyz'
-#    hostedZoneNames: 'api.sillium.xyz.'
-#    region: eu-east-1
-#    rewriteRecords: false
-#  scripts:
-#    hooks:
-#      'before:deploy:deploy': serverless create-zone; serverless create-cert; serverless create_domain --stage ${self:provider.stage} --verbose
+  customDomain:
+    domainName: tagesthemen.sillium.org
+    certificateName: 'tagesthemen.sillium.org'
+    basePath: ${self:custom.basepath.${self:provider.stage}}
+    stage: ${self:provider.stage}
+    createRoute53Record: true
+  customCertificate:
+    certificateName: 'tagesthemen.sillium.org'
+    hostedZoneNames: 'sillium.org.'
+    region: eu-east-1
+    rewriteRecords: false
+  scripts:
+    hooks:
+      'before:deploy:deploy': serverless create-cert; serverless create_domain --stage ${self:provider.stage} --verbose
 
 provider:
   name: aws
@@ -50,8 +48,7 @@ functions:
 plugins:
   - serverless-wsgi
   - serverless-python-requirements
-#  - serverless-plugin-scripts
-#  - serverless-hosted-zone
-#  - serverless-domain-manager
-#  - serverless-certificate-creator
+  - serverless-plugin-scripts
+  - serverless-domain-manager
+  - serverless-certificate-creator
 
