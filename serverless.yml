@@ -41,7 +41,6 @@ functions:
           path: /{proxy+}
           method: ANY
 
-
 plugins:
   - serverless-wsgi
   - serverless-python-requirements
