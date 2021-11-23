@@ -52,6 +52,14 @@ functions:
             cacheKeyParameters:
               - name: request.path.proxy
 
+  invalidate-cache:
+    handler: invalidate-cache.run
+    environment:
+      API_GATEWAY_ID: {Ref: ApiGatewayRestApi}
+      STAGE: ${self:custom.stage}
+    events:
+      - schedule: cron(0/1 * ? * * *)
+
 plugins:
   - serverless-wsgi
   - serverless-python-requirements
