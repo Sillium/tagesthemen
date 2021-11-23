@@ -1,7 +1,7 @@
 import os
 import datetime
 import logging
-import boto
+import boto3
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
