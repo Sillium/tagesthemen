@@ -58,7 +58,7 @@ functions:
       API_GATEWAY_ID: {Ref: ApiGatewayRestApi}
       STAGE: ${self:custom.stage}
     events:
-      - schedule: cron(0/1 * ? * * *)
+      - schedule: cron(* * ? * * *)
 
 plugins:
   - serverless-wsgi
