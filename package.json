@@ -7,6 +7,7 @@
     "serverless-python-requirements": "^5.1.0",
     "serverless-wsgi": "^1.7.6",
     "serverless-domain-manager": "^5.2.0",
-    "serverless-api-gateway-caching": "^1.7.4"
+    "serverless-api-gateway-caching": "^1.7.4",
+    "serverless-iam-roles-per-function": "^3.2.0"
   }
 }

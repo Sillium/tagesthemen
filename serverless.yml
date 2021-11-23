@@ -54,6 +54,12 @@ functions:
 
   invalidate-cache:
     handler: invalidate-cache.run
+    iamRoleStatements:
+      - Effect: "Allow"
+        Action:
+          - "apigateway:DELETE"
+        Resource:
+          - "*"
     environment:
       API_GATEWAY_ID: {Ref: ApiGatewayRestApi}
       STAGE: ${self:custom.stage}
@@ -65,3 +71,4 @@ plugins:
   - serverless-python-requirements
   - serverless-domain-manager
   - serverless-api-gateway-caching
+  - serverless-iam-roles-per-function
