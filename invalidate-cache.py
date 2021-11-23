@@ -2,6 +2,7 @@ import os
 import datetime
 import logging
 import boto3
+import json
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -17,7 +18,9 @@ def run(event, context):
     logger.info("Your cron function " + name + " ran at " + str(current_time))
     logger.info(f"Stage: {stage}, API Gateway Id: {api_gateway_id}")
 
-    #response = client.flush_stage_cache(
-    #    restApiId='string',
-    #    stageName='string'
-    #)
+    response = client.flush_stage_cache(
+        restApiId=api_gateway_id,
+        stageName=stage
+    )
+
+    logger.info(f"Response: {json.dumps(response, indent=2)}")
