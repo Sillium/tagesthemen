@@ -34,6 +34,12 @@ provider:
   timeout: 5
   tracing:
     lambda: true
+  stackTags:
+    source: https://github.com/Sillium/tagesthemen
+    serverlessOrg: ${self:org}
+    serverlessApp: ${self:app}
+    serverlessService: ${self:service}
+    serverlessStage: ${self:custom.stage}
 
 functions:
   api:
