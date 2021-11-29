@@ -30,6 +30,7 @@ provider:
   runtime: python3.8
   stage: ${self:custom.stage}
   lambdaHashingVersion: '20201221'
+  logRetentionInDays: 7
   memorySize: 128
   timeout: 15
   tracing:
@@ -58,8 +59,8 @@ functions:
             cacheKeyParameters:
               - name: request.path.proxy
 
-  invalidate-cache:
-    handler: invalidate-cache.run
+  invalidateCache:
+    handler: invalidateCache.run
     iamRoleStatements:
       - Effect: "Allow"
         Action:
