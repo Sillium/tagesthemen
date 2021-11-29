@@ -43,7 +43,7 @@ provider:
     serverlessStage: ${self:custom.stage}
 
 functions:
-  api:
+  getStartTime:
     handler: wsgi_handler.handler
     events:
       - http:
