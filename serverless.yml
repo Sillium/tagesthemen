@@ -31,7 +31,7 @@ provider:
   stage: ${self:custom.stage}
   lambdaHashingVersion: '20201221'
   memorySize: 128
-  timeout: 5
+  timeout: 15
   tracing:
     lambda: true
   stackTags:
