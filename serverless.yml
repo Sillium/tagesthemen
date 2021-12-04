@@ -21,7 +21,7 @@ custom:
     certificateArn: ${param:certificateArn}
   apiGatewayCaching:
     enabled: true
-    clusterSize: '0.5'
+    clusterSize: '0.001'
     ttlInSeconds: 3600
     dataEncrypted: false
 
@@ -33,6 +33,7 @@ provider:
   logRetentionInDays: 7
   memorySize: 128
   timeout: 15
+  region: eu-central-1
   tracing:
     lambda: true
   stackTags:
