@@ -50,11 +50,15 @@ functions:
       - http:
           path: /
           method: GET
+#          apiGatewayCaching:
+#            enabled: true
       - http:
           path: /{proxy+}
           method: GET
-            cacheKeyParameters:
-              - name: request.path.proxy
+#          apiGatewayCaching:
+#            enabled: true
+#            cacheKeyParameters:
+#              - name: request.path.proxy
 
 #  invalidateCache:
 #    handler: invalidateCache.run
