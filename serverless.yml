@@ -19,8 +19,8 @@ custom:
     createRoute53Record: true
     hostedZoneId: ${param:hostedZoneId}
     certificateArn: ${param:certificateArn}
-#  apiGatewayCaching:
-#    enabled: true
+  apiGatewayCaching:
+    enabled: false
 #    clusterSize: '0.5' # USD 0.02 per hour
 #    ttlInSeconds: 3600
 #    dataEncrypted: false
@@ -78,5 +78,5 @@ plugins:
   - serverless-wsgi
   - serverless-python-requirements
   - serverless-domain-manager
-#  - serverless-api-gateway-caching
+  - serverless-api-gateway-caching
   - serverless-iam-roles-per-function
