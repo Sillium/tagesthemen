@@ -19,11 +19,11 @@ custom:
     createRoute53Record: true
     hostedZoneId: ${param:hostedZoneId}
     certificateArn: ${param:certificateArn}
-  apiGatewayCaching:
-    enabled: true
-    clusterSize: '0.001'
-    ttlInSeconds: 3600
-    dataEncrypted: false
+#  apiGatewayCaching:
+#    enabled: true
+#    clusterSize: '0.5' # USD 0.02 per hour
+#    ttlInSeconds: 3600
+#    dataEncrypted: false
 
 provider:
   name: aws
@@ -50,33 +50,29 @@ functions:
       - http:
           path: /
           method: GET
-          caching:
-            enabled: true
       - http:
           path: /{proxy+}
           method: GET
-          caching:
-            enabled: true
             cacheKeyParameters:
               - name: request.path.proxy
 
-  invalidateCache:
-    handler: invalidateCache.run
-    iamRoleStatements:
-      - Effect: "Allow"
-        Action:
-          - "apigateway:DELETE"
-        Resource:
-          - "*"
-    environment:
-      API_GATEWAY_ID: {Ref: ApiGatewayRestApi}
-      STAGE: ${self:custom.stage}
-    events:
-      - schedule: cron(1 22-23 ? * * *) # UTC, DST/no DST
+#  invalidateCache:
+#    handler: invalidateCache.run
+#    iamRoleStatements:
+#      - Effect: "Allow"
+#        Action:
+#          - "apigateway:DELETE"
+#        Resource:
+#          - "*"
+#    environment:
+#      API_GATEWAY_ID: {Ref: ApiGatewayRestApi}
+#      STAGE: ${self:custom.stage}
+#    events:
+#      - schedule: cron(1 22-23 ? * * *) # UTC, DST/no DST
 
 plugins:
   - serverless-wsgi
   - serverless-python-requirements
   - serverless-domain-manager
-  - serverless-api-gateway-caching
+#  - serverless-api-gateway-caching
   - serverless-iam-roles-per-function
