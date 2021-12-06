@@ -55,5 +55,5 @@ def index():
 
 @app.after_request
 def add_security_headers(response):
-    response.headers['Cache-Control'] = 'max-age=60'
+    response.headers['Cache-Control'] = 'max-age=300'
     return response
