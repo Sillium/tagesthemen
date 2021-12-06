@@ -51,4 +51,6 @@ def plain_text():
 @app.route("/")
 def index():
     answer = "Die Tagesthemen kommen heute um " + get_when("Tagesthemen")["when"] + " in der ARD."
-    return render_template("index.html", when=answer, url=get_when("Tagesthemen")["url"])
+    response = render_template("index.html", when=answer, url=get_when("Tagesthemen")["url"])
+    response.headers['Cache-Control'] = 'max-age=60'
+    return 
