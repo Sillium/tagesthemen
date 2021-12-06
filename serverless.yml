@@ -12,13 +12,15 @@ custom:
     domainName: ${self:service}.sillium.org
   wsgi:
     app: app.app
-  customDomain:
-    domainName: ${self:custom.${self:custom.stage}.domainName}
-    basePath: ''
-    autoDomain: true
-    createRoute53Record: true
-    hostedZoneId: ${param:hostedZoneId}
-    certificateArn: ${param:certificateArn}
+  apiCloudFront:
+    domain: ${self:custom.${self:custom.stage}.domainName}
+    certificate: ${param:certificateArn}
+    logging:
+      bucket: sillium-apis-cloudfront-logs.s3.amazonaws.com
+      prefix: ${self:service}
+    cookies: none
+  pythonRequirements:
+    pythonBin: python3
 
 provider:
   name: aws
@@ -53,4 +55,4 @@ functions:
 plugins:
   - serverless-wsgi
   - serverless-python-requirements
-  - serverless-domain-manager
+  - serverless-api-cloudfront
