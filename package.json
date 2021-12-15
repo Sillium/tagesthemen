@@ -4,9 +4,11 @@
   "description": "Tagesthemen API",
   "author": "",
   "devDependencies": {
-    "serverless-python-requirements": "^5.1.0",
-    "serverless-wsgi": "^1.7.6",
+    "serverless-python-requirements": "latest",
+    "serverless-wsgi": "latest",
     "serverless-api-cloudfront": "latest",
-    "serverless-iam-roles-per-function": "^3.2.0"
+    "serverless-iam-roles-per-function": "latest",
+    "serverless-deployment-bucket": "latest",
+    "serverless-s3-remover": "latest"
   }
 }

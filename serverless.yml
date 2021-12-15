@@ -1,24 +1,24 @@
 org: stoerk
-app: sillium-apis
+app: sillium-tagesthemen
 service: tagesthemen
 
 frameworkVersion: '2'
 
 custom:
   stage: ${opt:stage}
-  dev: 
-    domainName: ${self:service}.dev.sillium.org
-  prod:
-    domainName: ${self:service}.sillium.org
+  # dev: 
+  #   domainName: dev.${self:service}.sillium.xyz
+  # prod:
+  #   domainName: ${self:service}.sillium.xyz
   wsgi:
     app: app.app
-  apiCloudFront:
-    domain: ${self:custom.${self:custom.stage}.domainName}
-    certificate: ${param:certificateArn}
-    logging:
-      bucket: sillium-apis-cloudfront-logs.s3.amazonaws.com
-      prefix: ${self:service}/${self:custom.stage}
-    cookies: none
+  # apiCloudFront:
+  #   domain: ${self:custom.${self:custom.stage}.domainName}
+  #   certificate: ${param:certificateArn}
+  #   logging:
+  #     bucket: ${self:app}-${self:custom.stage}-cloudfront-logs.s3.amazonaws.com
+  #     prefix: ${self:service}/${self:custom.stage}
+  #   cookies: none
   pythonRequirements:
     pythonBin: python3
 
@@ -31,7 +31,8 @@ provider:
   memorySize: 128
   timeout: 15
   region: eu-central-1
-  deploymentBucket: sillium-apis-serverless-deployments
+  deploymentBucket:
+      name: ${self:app}-${self:custom.stage}-serverless-deployments
   tracing:
     lambda: true
   stackTags:
@@ -55,4 +56,16 @@ functions:
 plugins:
   - serverless-wsgi
   - serverless-python-requirements
-  - serverless-api-cloudfront
+#  - serverless-api-cloudfront
+  - serverless-deployment-bucket
+  - serverless-s3-remover
+
+resources:
+  Resources:
+    CloudFrontLogsS3Bucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:app}-${self:custom.stage}-cloudfront-logs
+        AccessControl: BucketOwnerFullControl
+        VersioningConfiguration:
+          Status: Enabled
