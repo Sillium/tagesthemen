@@ -16,7 +16,7 @@ custom:
     domain: ${self:custom.${self:custom.stage}.domainName}
     certificate: ${param:certificateArn}
     logging:
-      bucket: ${self:app}-${self:custom.stage}-cloudfront-logs.s3.amazonaws.com
+      bucket: cloudfront-logs-${param:accountId}.s3.amazonaws.com
       prefix: ${self:service}/${self:custom.stage}
     cookies: none
   pythonRequirements:
@@ -31,8 +31,7 @@ provider:
   memorySize: 128
   timeout: 15
   region: eu-central-1
-  deploymentBucket:
-      name: ${self:app}-${self:custom.stage}-serverless-deployments
+  deploymentBucket: serverless-deployments-${param:accountId}
   tracing:
     lambda: true
   stackTags:
@@ -57,15 +56,3 @@ plugins:
   - serverless-wsgi
   - serverless-python-requirements
   - serverless-api-cloudfront
-  - serverless-deployment-bucket
-  - serverless-s3-remover
-
-resources:
-  Resources:
-    CloudFrontLogsS3Bucket:
-      Type: AWS::S3::Bucket
-      Properties:
-        BucketName: ${self:app}-${self:custom.stage}-cloudfront-logs
-        AccessControl: BucketOwnerFullControl
-        VersioningConfiguration:
-          Status: Enabled
