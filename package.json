@@ -6,9 +6,6 @@
   "devDependencies": {
     "serverless-python-requirements": "latest",
     "serverless-wsgi": "latest",
-    "serverless-api-cloudfront": "latest",
-    "serverless-iam-roles-per-function": "latest",
-    "serverless-deployment-bucket": "latest",
-    "serverless-s3-remover": "latest"
+    "serverless-api-cloudfront": "latest"
   }
 }
