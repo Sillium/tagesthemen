@@ -2,7 +2,7 @@ org: stoerk
 app: sillium-tagesthemen
 service: tagesthemen
 
-frameworkVersion: '2'
+frameworkVersion: '3'
 
 custom:
   stage: ${opt:stage}
